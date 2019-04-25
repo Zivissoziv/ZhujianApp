@@ -40,7 +40,7 @@ public class RecommendRecipeAdapter extends RecyclerView.Adapter<RecommendRecipe
     public void onBindViewHolder(@NonNull RecommendRecipeAdapter.MyViewHolder myViewHolder , int i) {
         myViewHolder.TvTitle.setText(rData.get(i).getTitle());
         GetImageByUrl getImageByUrl = new GetImageByUrl();
-        getImageByUrl.setImage(myViewHolder.ImgRecipe,rData.get(i).getPhoto());
+        getImageByUrl.setImage(myViewHolder.ImgRecipe,rData.get(i).getImage());
     }
 
     @Override

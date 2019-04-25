@@ -46,7 +46,7 @@ public class JsonUtil {
         }
         inStream.close();
         String jsonStr = new String(outStream.toByteArray());//通过out.Stream.toByteArray获取到写的数据
-        System.out.println(jsonStr);
+//        System.out.println(jsonStr);
         List<Recipe> result = Analysis(jsonStr);
         return result;
     }
@@ -67,18 +67,38 @@ public class JsonUtil {
             Recipe recipe = new Recipe();
             recipe.setTitle(jsonObject.get("title").getAsString());
             recipe.setDescription(jsonObject.get("description").getAsString());
-            recipe.setPhoto(jsonObject.get("img").getAsString());
+            recipe.setImage(jsonObject.get("img").getAsString());
             recipe.setRecommend(jsonObject.get("is_recommend").getAsBoolean());
             recipe.setSlide(jsonObject.get("is_slide").getAsBoolean());
             recipe.setCategorie(jsonObject.get("categorie").getAsString());
 
+            //获取食材列表
             ArrayList<String> materialList = new ArrayList<>();
             JsonArray materials = jsonObject.get("material").getAsJsonArray();
             for (JsonElement material : materials) {
                 materialList.add(material.getAsString());
             }
-
             recipe.setMaterial(materialList);
+
+
+            //获取步骤说明列表
+            ArrayList<String> stepDescriptionList = new ArrayList<>();
+            JsonArray step_descriptions = jsonObject.get("step_description").getAsJsonArray();
+            for (JsonElement step_description : step_descriptions) {
+                stepDescriptionList.add(step_description.getAsString());
+            }
+            recipe.setStepDescription(stepDescriptionList);
+
+
+            //获取步骤图片列表
+            ArrayList<String> stepImgList = new ArrayList<>();
+            JsonArray step_imgs = jsonObject.get("step_img").getAsJsonArray();
+            for (JsonElement step_img : step_imgs) {
+                stepImgList.add(step_img.getAsString());
+            }
+            recipe.setStepImg(stepImgList);
+
+
 
             list.add(recipe);
         }

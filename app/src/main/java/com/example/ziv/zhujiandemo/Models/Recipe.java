@@ -1,17 +1,18 @@
 package com.example.ziv.zhujiandemo.Models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 /**
  * 菜谱的实体类
+ * 为了方便在不同页面进行传输，实现Serializable接口
  */
 
-public class Recipe {
-    private int Image ;
+public class Recipe implements Serializable {
     private String Title;
     private String Description;
-    private String Photo;
+    private String Image;
 
 
 
@@ -19,38 +20,30 @@ public class Recipe {
     private boolean isSlide;
     private boolean isRecommend;
     private ArrayList<String> Material;
-
-
-    // Add more field depand on whay you wa&nt ...
+    private ArrayList<String> StepDescription;
+    private ArrayList<String> StepImg;
 
 
     public Recipe() {
     }
 
-    public Recipe(int image, String title) {
-        Image = image;
-        Title = title;
-    }
-
-    public Recipe(int image, String title,String description) {
-        Image = image;
-        Title = title;
-        Description = description;
-    }
 
     @Override
     public String toString() {
         return "Recipe{" +
-                ", Title='" + Title + '\'' +
+                "Title='" + Title + '\'' +
                 ", Description='" + Description + '\'' +
-                ", Photo='" + Photo + '\'' +
-                ", img='" + Image + '\'' +
-                ", isSlide"+isSlide+'\''+
-                ", isRecommend"+isRecommend+
+                ", Image='" + Image + '\'' +
+                ", Categorie='" + Categorie + '\'' +
+                ", isSlide=" + isSlide +
+                ", isRecommend=" + isRecommend +
+                ", Material=" + Material +
+                ", StepDescription=" + StepDescription +
+                ", StepImg=" + StepImg +
                 '}';
     }
 
-    public int getImage() {
+    public String getImage() {
         return Image;
     }
 
@@ -62,7 +55,7 @@ public class Recipe {
         return Description;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         Image = image;
     }
 
@@ -72,14 +65,6 @@ public class Recipe {
 
     public void setDescription(String description) {
         Description = description;
-    }
-
-    public String getPhoto() {
-        return Photo;
-    }
-
-    public void setPhoto(String photo) {
-        Photo = photo;
     }
 
     public boolean isSlide() {
@@ -113,6 +98,25 @@ public class Recipe {
     public void setCategorie(String categorie) {
         Categorie = categorie;
     }
+
+    public ArrayList<String> getStepDescription() {
+        return StepDescription;
+    }
+
+    public void setStepDescription(ArrayList<String> stepDescription) {
+        StepDescription = stepDescription;
+    }
+
+    public ArrayList<String> getStepImg() {
+        return StepImg;
+    }
+
+    public void setStepImg(ArrayList<String> stepImg) {
+        StepImg = stepImg;
+    }
+    // Add more field depand on whay you wa&nt ...
+
+
 
 
 }

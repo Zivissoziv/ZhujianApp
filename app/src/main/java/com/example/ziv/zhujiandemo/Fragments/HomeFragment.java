@@ -221,16 +221,10 @@ public class HomeFragment extends Fragment implements RecipeItemClickListener {
     public void onRecipeClick(Recipe recipe, ImageView recipeImageView) {
         Intent intent = new Intent(getActivity(), RecipeDetailActivity.class);
 
-        intent.putExtra("title", recipe.getTitle());
-        intent.putExtra("imgURL", recipe.getPhoto());
-        intent.putExtra("categorie",recipe.getCategorie());
-        intent.putExtra("description",recipe.getDescription());
-        intent.putStringArrayListExtra("materialList",recipe.getMaterial());
-
-
+        intent.putExtra("recipe",recipe);
         startActivity(intent);
 
-        Toast.makeText(getActivity(), "item clicked : " + recipe.getTitle(), Toast.LENGTH_LONG).show();
+//        Toast.makeText(getActivity(), "item clicked : " + recipe.getTitle(), Toast.LENGTH_LONG).show();
     }
 
 
